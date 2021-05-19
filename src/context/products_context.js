@@ -12,6 +12,9 @@ import {
 	GET_SINGLE_PRODUCT_SUCCESS,
 	GET_SINGLE_PRODUCT_ERROR,
 } from "../actions";
+
+// Makes actions global
+
 const initialState = {
 	isSidebarOpen: false,
 	products_loading: false,
@@ -57,6 +60,7 @@ export const ProductsProvider = ({ children }) => {
 		}
 	};
 
+	// fetches products from url only once after page loads
 	useEffect(() => {
 		fetchProducts(url);
 	}, []);

@@ -12,6 +12,9 @@ const Sidebar = () => {
 	const { isSidebarOpen, closeSidebar } = useProductsContext();
 	// const { myUser } = useUserContext();
 
+	// if sideBarOpen is true add sidebar show-sidebar to create sidebar
+	// once closed action is disptched to false closing the sidebar and removing classes
+
 	return (
 		<SidebarContainer>
 			<aside
