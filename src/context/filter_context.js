@@ -26,8 +26,11 @@ const initialState = {
 		max_price: 0,
 		price: 0,
 		shipping: false,
+		Test: "test",
 	},
 };
+
+// passes actions to become global
 
 const FilterContext = React.createContext();
 
@@ -35,10 +38,12 @@ export const FilterProvider = ({ children }) => {
 	const { products } = useProductsContext();
 	const [state, dispatch] = useReducer(reducer, initialState);
 
+	// load list when products array changes
 	useEffect(() => {
 		dispatch({ type: LOAD_PRODUCTS, payload: products });
 	}, [products]);
 
+	// when filters or sort options changes filter or sort list
 	useEffect(() => {
 		dispatch({ type: FILTER_PRODUCTS });
 		dispatch({ type: SORT_PRODUCTS });
@@ -56,6 +61,7 @@ export const FilterProvider = ({ children }) => {
 		dispatch({ type: UPDATE_SORT, payload: value });
 	};
 	const updateFilters = (e) => {
+		// grabs name of target (company, category, colors etc. ) then compares it to if statements to change the value
 		let name = e.target.name;
 		let value = e.target.value;
 		if (name === "category") {

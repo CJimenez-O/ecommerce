@@ -7,6 +7,7 @@ import { FaCheck } from "react-icons/fa";
 // renders search bar, company, category, price, colors, free shipping and clears filter buttons
 // when filter buttons are clicked it passes it to updateFilter function and dispatches it
 
+// destructures filters object and options
 const Filters = () => {
 	const {
 		filters: {
@@ -24,6 +25,8 @@ const Filters = () => {
 		all_products,
 	} = useFilterContext();
 
+	// finds values and creates array of values have repeated to get unique values from utils function
+	// then we run .map to create filter options dynamically
 	const categories = getUniqueValues(all_products, "category");
 	const companies = getUniqueValues(all_products, "company");
 	const colors = getUniqueValues(all_products, "colors");
@@ -49,6 +52,7 @@ const Filters = () => {
 						<h5>category</h5>
 						<div>
 							{categories.map((c, index) => {
+								// console.log(c);
 								return (
 									<button
 										key={index}

@@ -2,9 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import Product from "./Product";
 
-// displays products in a grid format
+// displays filtered products in a grid format
 
 const GridView = ({ products }) => {
+	console.log(products);
 	return (
 		<Wrapper>
 			<div className="products-container">

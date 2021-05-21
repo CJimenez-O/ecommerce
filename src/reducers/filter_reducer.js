@@ -11,6 +11,8 @@ import {
 
 // filters products depending on option/ action selected
 
+// initially loads all products and finds max price
+// filters and sorts products products depending on option/ action selected
 const filter_reducer = (state, action) => {
 	if (action.type === LOAD_PRODUCTS) {
 		let maxPrice = action.payload.map((p) => p.price);
@@ -20,7 +22,12 @@ const filter_reducer = (state, action) => {
 			...state,
 			all_products: [...action.payload],
 			filtered_products: [...action.payload],
-			filters: { ...state.filters, max_price: maxPrice, price: maxPrice },
+			filters: {
+				...state.filters,
+				max_price: maxPrice,
+				price: maxPrice,
+				Test: "loaded",
+			},
 		};
 	}
 	if (action.type === SET_GRIDVIEW) {
@@ -65,10 +72,13 @@ const filter_reducer = (state, action) => {
 		const { name, value } = action.payload;
 		return { ...state, filters: { ...state.filters, [name]: value } };
 	}
-	if (action.type === FILTER_PRODUCTS) {
-		const { all_products } = state;
-		const { text, category, company, color, price, shipping } = state.filters;
 
+	if (action.type === FILTER_PRODUCTS) {
+		// console.log("Filtering");
+		const { all_products } = state;
+		// grabs filter options choosen
+		const { text, category, company, color, price, shipping } = state.filters;
+		// starts temp products with all products
 		let tempProducts = [...all_products];
 		// filtering
 		// text
@@ -105,6 +115,7 @@ const filter_reducer = (state, action) => {
 			);
 		}
 
+		// passes results of filtered products to product list
 		return { ...state, filtered_products: tempProducts };
 	}
 	if (action.type === CLEAR_FILTERS) {

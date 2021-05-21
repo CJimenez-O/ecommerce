@@ -3,7 +3,7 @@ import { useFilterContext } from "../context/filter_context";
 import { BsFillGridFill, BsList } from "react-icons/bs";
 import styled from "styled-components";
 
-// renders sorting options to list or grid using global context
+// renders sorting options to list or grid as well as sorts it from least to most expsensive and alphabetical order using global context
 
 const Sort = () => {
 	const {
