@@ -1,9 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
+
+// grabs star then loops through index to display a full star, half star icons based on if the value is greater than or less than 1
 const Stars = ({ stars, reviews }) => {
 	const tempStars = Array.from({ length: 5 }, (_, index) => {
 		const number = index + 0.5;
+		// console.log(number);
 		return (
 			<span key={index}>
 				{stars >= index + 1 ? (
