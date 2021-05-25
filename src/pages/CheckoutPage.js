@@ -5,6 +5,8 @@ import { PageHero, StripeCheckout } from "../components";
 import { useCartContext } from "../context/cart_context";
 import { Link } from "react-router-dom";
 
+// if cart has nothing inside display its empty else use stripe component
+
 const CheckoutPage = () => {
 	const { cart } = useCartContext();
 	return (
@@ -26,5 +28,16 @@ const CheckoutPage = () => {
 	);
 };
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+	.products {
+		display: grid;
+		gap: 3rem 1.5rem;
+		margin: 4rem auto;
+	}
+	@media (min-width: 768px) {
+		.products {
+			grid-template-columns: 200px 1fr;
+		}
+	}
+`;
 export default CheckoutPage;
